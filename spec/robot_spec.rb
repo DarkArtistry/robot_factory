@@ -17,30 +17,27 @@
 require_relative '../robot'
 
 describe Robot do
-  before(:context) do
+  before(:each) do
     @r1 = Robot.new
+    @r2 = Robot.new
   end
 
   describe 'Initialization' do
-    it 'should create new robot with random name' do
-      expect(@r1).to have_attributes(name: [A - Z][A - Z][0 - 9][0 - 9][0 - 9])
+    it 'should create new robot name' do
+      expect(@r1.name).to match(/^[A-Z]{2}\d{3}$/)
+      expect(@r2.name).to match(/^[A-Z]{2}\d{3}$/)
     end
 
-    it 'should create new robot with name' do
-      r2 = Robot.new
-      expect(@r1.name).not_to eq(r2.name)
+    it 'should not create name that has been created' do
+      expect(@r1.name).not_to eq(@r2.name)
     end
   end
 
-  describe 'Reset' do
-    it 'should create new name ' do
-      @name1 = @r1.name
-      @r1.name = reset
-      @name2 = @r1.name
-      expect @r1.name.to eq([A - Z][A - Z][0 - 9][0 - 9][0 - 9])
+  describe '#reset' do
+    it 'should reset robot name to a new one' do
+      original_name = @r1.name
+      @r1.reset
+      expect(@r1.name).not_to eq original_name
     end
-
-    it 'should not be the same as the old name'
-    expect @name1.not_to eq(@name2)
   end
 end
