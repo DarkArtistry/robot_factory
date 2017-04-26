@@ -1,11 +1,7 @@
 class Robot
-<<<<<<< HEAD
-  attr_reader :name
-=======
-
   attr_accessor :name
   @@name = []
->>>>>>> be587ffc56f14838f2dfd2f5b9fef1a9c2b408f9
+
 
   def initialize
     @name = reset
