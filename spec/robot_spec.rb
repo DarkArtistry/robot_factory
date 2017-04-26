@@ -8,5 +8,10 @@ describe Robot do
       expect(r1.name).to eq('AB123')
     end
   end
+  describe 'Reset' do
+    it 'should create new name for robot' do
+      
+    end
+  end
 
 end
